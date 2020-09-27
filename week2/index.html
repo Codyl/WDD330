@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2 notes</title>
+</head>
+<body>
+    <script>
+        function includeHTML() {
+  var z, i, elmnt, file, xhttp;
+  /* Loop through a collection of all HTML elements: */
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("w3-include-html");
+    if (file) {
+      /* Make an HTTP request using the attribute value as the file name: */
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          /* Remove the attribute, and call this function once more: */
+          elmnt.removeAttribute("w3-include-html");
+          includeHTML();
+        }
+      }
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /* Exit the function: */
+      return;
+    }
+  }
+}
+    </script>
+    <script>
+        let quiz = new Map();
+        quiz.set("What is Superman's real name?","Clark Kent")
+
+    let numQuestions = 2;
+    function addQuestion() {
+        let newQuestion = document.createElement('div');
+        newQuestion.setAttribute('id',`q${numQuestions+1}`)
+        newQuestion.setAttribute('style','background-color: grey');
+        newQuestion.innerHTML = `<h4>Question ${numQuestions+1}</h4><button class="removeQuestion" style="float:right" onclick='removeQuestion("${numQuestions+1}")'>Remove this question</button> 
+        <span >Question: <input type='text' class='questions' required></span><br>
+        <span>Answer: <input type='text' class='answers' required></span>
+        <br>`;
+        document.getElementById('questions').appendChild(newQuestion);
+        numQuestions++;
+    }
+    function removeQuestion(questionNumber) {
+        document.getElementById(`q${questionNumber}`).remove();
+        quiz.delete(document.getElementsByClassName('questions')[questionNumber - 1])
+        numQuestions--;
+    }
+    function update() {
+        quiz.clear()
+        for(let i = 0; i < numQuestions; i++) {
+            
+            quiz.set(document.getElementsByClassName('questions')[i].value, document.getElementsByClassName('answers')[i].value);
+        }
+        console.log(quiz);
+        generateQuiz();
+    }
+    
+    function check(question, userAnswer) {
+        console.log(userAnswer);
+        if(quiz.get(question) == userAnswer)
+        {
+            document.getElementById('response'+questionNumber).innerText = "Correct!";
+            score++;
+        }
+        else
+        {
+            document.getElementById('response'+questionNumber).innerText = `Wrong! The correct answer was ${quiz.get(question)}`;
+        }
+    }
+    let score = 0;
+    function generateQuiz() {
+        for(const [question,answer] of quiz){
+            document.getElementById('quizInput').innerHTML = `Questions and Answers`;
+            let i = 0;
+            for(const [key, value] of quiz.entries()){
+                i++;
+                console.log(quiz.get(key));
+                document.getElementById('quizInput').innerHTML += 
+                    `<div>Question ${i+1}. ${key} Answer: <input type='text' id='answer${i}'>
+                    <button onclick='check(${key}, document.getElementsByClassName("answers")[${i}]'>Test answer</button> 
+                    <span id='response${i}'></span></div>`;
+            }
+        }
+    }
+    </script>
+    <h1>Week 2</h1>
+    <div id='Quiz'>
+        <h2>Quiz JS example</h2>
+        <h3></h3>
+        <p><h3>Add or remove questions:</h3>
+            <div id='q1' style="background-color: grey;">
+                <h4>Question 1 (Example)</h4><button class="removeQuestion" style="float:right" onclick="removeQuestion(1)">Remove this question</button> 
+                <span >Question: <input type='text' class='questions' value="What is Superman's real name?"> </span><br>
+                <span>Answer: <input type='text' class='answers' value="Clark Kent"></span> 
+                <br>
+            </div>
+            <div id='q2' style="background-color: grey;">
+                <h4>Question 2</h4><button class="removeQuestion" style="float:right"  onclick="removeQuestion(2)">Remove this question</button>
+                <span >Question: <input type='text' class='questions' required></span><br>
+                <span>Answer: <input type='text' class='answers' required></span>
+                <br>
+            </div>
+            <p id='questions'></p>
+            <button onclick="addQuestion()">Add another Question</button><br>
+            <button onclick="update()">Try your quiz</button>
+        </p>
+        <p id='quizInput'></p>
+        <p>Score: <span id='score'></span></p>
+    </div>
+    <div id='notes'>
+        <h2>Notes: Javascript to ninja</h2>
+        <h3>Chapter 2</h3>
+        <ol>
+            <li>Data types: Number, String, Infinity, Null, NaN, Symbol, Boolean</li>
+            <li>Always avoid global variables by using const or let rather than var where possible.</li>
+            <li>Seek to always use hard equality === !==</li>
+        </ol>
+        <h3>Chapter 3</h3>
+        <ol>
+            <li>Sets are lists that store unique values only.</li>
+            <li>Maps are key value pairs.</li>
+        </ol>
+        <h3>Chapter 4</h3>
+        <ol>
+            <li>Hoisting means moving variables to the top of the scope.</li>
+            <li>A
+                function that is passed as an argument to another is known as a callback</li>
+        </ol>
+    </div>
+    <div w3-include-html="../nav.html"></div>
+    <script>
+        includeHTML();
+    </script>
+</body>
+</html>

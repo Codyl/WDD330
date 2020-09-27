@@ -1,0 +1,10 @@
+#top {
+    background: url('background.svg'), no-repeat;
+}
+h1 {
+    color: green;
+}
+body {
+    margin: 50px;
+    content: gray;
+}
