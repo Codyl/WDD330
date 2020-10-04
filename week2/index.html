@@ -6,6 +6,7 @@
     <title>Week 2 notes</title>
 </head>
 <body>
+    <!-- include HTML script -->
     <script>
         function includeHTML() {
   var z, i, elmnt, file, xhttp;
@@ -35,9 +36,10 @@
   }
 }
     </script>
+    <!-- Quiz script -->
     <script>
         let quiz = new Map();
-        quiz.set("What is Superman's real name?","Clark Kent")
+        quiz.set("What is Supermans real name?","Clark Kent")
 
     let numQuestions = 2;
     function addQuestion() {
@@ -66,30 +68,37 @@
         generateQuiz();
     }
     
-    function check(question, userAnswer) {
-        console.log(userAnswer);
+    function check(questionNumber, userAnswer) {
+        console.log(questionNumber);
+        let question = document.getElementsByClassName('questions')[questionNumber].value;
         if(quiz.get(question) == userAnswer)
         {
-            document.getElementById('response'+questionNumber).innerText = "Correct!";
+            document.getElementById(`response${questionNumber}`).innerText = "Correct!";
             score++;
         }
         else
         {
-            document.getElementById('response'+questionNumber).innerText = `Wrong! The correct answer was ${quiz.get(question)}`;
+            document.getElementById(`response${questionNumber}`).innerText = `Wrong! The correct answer was ${quiz.get(question)}`;
         }
     }
     let score = 0;
+    function runCheck() {
+        check(0,document.getElementsByClassName("answers")[i].innerText);
+    }
     function generateQuiz() {
         for(const [question,answer] of quiz){
             document.getElementById('quizInput').innerHTML = `Questions and Answers`;
             let i = 0;
             for(const [key, value] of quiz.entries()){
                 i++;
-                console.log(quiz.get(key));
+               // console.log(quiz.get(key));
+                let button = document.createElement('button');
+                button.textContent = "test answer";
                 document.getElementById('quizInput').innerHTML += 
-                    `<div>Question ${i+1}. ${key} Answer: <input type='text' id='answer${i}'>
-                    <button onclick='check(${key}, document.getElementsByClassName("answers")[${i}]'>Test answer</button> 
-                    <span id='response${i}'></span></div>`;
+                `<div>Question ${i}. ${key} <br>Answer: <input type='text' id='answer${i}'>`;
+                button.addEventListener('click', runCheck);
+                document.getElementById('quizInput').append(button);
+                document.getElementById('quizInput').innerHTML += `<span id='response${i}'></span></div>`;
             }
         }
     }
