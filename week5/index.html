@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+    <body>
+        <h1>Week 5</h1>
+        <h2>Debugging</h2>
+        <summary>Debugging is the process of searching for interactions the user may have that could cause an error. By debugging we can find bugs and make our website more user-friendly.</summary>
+        <p>We want to be fully aware of the errors so we can make the user have to deal with them less. While
+            programming we want it to fail loudly and be tested rigorously. We qill then gain the users trust in the production version. 
+        </p>
+        <ul>
+            <li>exceptions: an errors return value that can be accessed for the error details</li>
+            <li>Warning: Error that does not cause the program to crash. Javascript code will continue to run but warnings can cause unexpected issues if not dealt with.</li>
+            <li>Strict mode: Helps us avoid poor programming practices that can cause spaghetti code and errors in our code down the line.</li>
+        </ul>
+        <h3>Types of errors</h3>
+        <ul>
+            <li>System</li>
+            <li>Programmer: evalError, referenceError, rangeError, syntaxError, URIError, InternalError, typeError</li>
+            <li>User (better known as programmer errors noticed by the user)</li>
+        </ul>
+        <h2>Linting</h2>
+        <summary>Linting tools can be used to enforce a style guide and further avoid bad practices in our code. They can be added as a text editor plugin. "Linting is a process by a linter program that analyzes source code... and flagging particular problems."<a href="https://stackoverflow.com/questions/8503559/what-is-linting#:~:text=Linting%20is%20a%20process%20by%20a%20linter%20program,the%20first%20use%20of%20parseInt%20below%20as%20unsafe%3A">Linting defined</a></summary>
+        <ul>
+            <li>JS Lint</li>
+            <li>JS Hint</li>
+            <li>ES Lint</li>
+        </ul>
+        <h2>Feature detection</h2>
+        <summary>Used to determine browser support and consists of an if statement inside which 
+            we test to see if the method exists. Some browsers support methods that others do not. 
+            We need to capture all types of browsers in use to gain the users trust.</summary>
+        <h2>DeBugging codes</h2>
+        <ol>
+            <li>'use strict';</li>
+            <li>alert(currValue);</li>
+            <li>console.log(currValue);</li>
+            <li>breakpoint and debugger;(keyword)</li>
+            <li>Browser debugging tool ie. Chrome code inspector</li>
+            <li>Try catch statement <p>throwing an error object in the try when faulty input 
+                occurs. Error objects have message, name, and stack.</p></li>
+        </ol>
+        <h2>Test Driven Development process</h2>
+        <summary>Used to thoroughly test our code. We write tests such as: <code>test('2 is prime', () => {
+            expect(isPrime(2)).toBe(true);
+            });
+            test('10 is not prime', () => {
+            expect(isPrime(10)).not.toBe(true);
+            });</code>
+        <a href="https://www.agilealliance.org/glossary/tdd/#q=~(infinite~false~filters~(postType~(~'page~'post~'aa_book~'aa_event_session~'aa_experience_report~'aa_glossary~'aa_research_paper~'aa_video)~tags~(~'tdd))~searchTerm~'~sort~false~sortDirection~'asc~page~1)">More on TDD</a>
+        </summary>
+        <ol>
+            <li>Write test</li>
+            <li>Write code to pass the test</li>
+            <li>Refactor the code</li>
+            <li>Test refactored code</li>
+            <li>Write more tests for new features</li>
+        </ol>
+        <h2>Testing frameworks</h2>
+        <summary>Jest is one testing framework. It needs to be installed using npm. It looks much like straight english. ie. expect(value).toBe(comparedValue);</summary>
+        <a href="https://www.lambdatest.com/blog/top-javascript-automation-testing-framework/">Testing frameworks</a>
+    </body>
+</html>

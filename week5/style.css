@@ -1,0 +1,15 @@
+summary {
+    background-color: lightblue;
+    border: 5px;
+    border-radius: 2px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    margin: 40px;
+}
+h1 {
+    background-image: url("image.jpg");
+    color: white;
+    font-style: oblique;
+    padding: 20px;
+}
