@@ -49,6 +49,10 @@ function displayLinks() {
     {
       label: "Week11 notes",
       url: "week11/index.html"
+    },
+    {
+      label: "To Do assignment",
+      url: "todo/index.html"
     }
   ];
   const fullList = document.createElement('ol');
