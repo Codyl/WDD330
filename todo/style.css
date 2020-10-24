@@ -1,0 +1,77 @@
+
+/* When checkbox is clicked add completed class below*/
+.completed {
+    text-decoration: line-through;
+}
+/* When filter is clicked add selected class below*/
+.selected {
+    border: 3px solid red;
+}
+/* Form css*/
+input[type="checkbox"] {
+    zoom: 1.5;
+} 
+#addTask {
+    font-size: xx-large;
+    position: relative;
+    bottom: 35px;
+    height: 90px;
+    width: 60px;
+    background-color: green;
+}
+#addTask:hover {
+    cursor: pointer;
+}
+textarea {
+    width: calc(100% - 80px);
+}
+/*Table css*/
+table {
+    border: 2px solid black;
+    border-radius: 2px;
+    border-collapse: collapse;
+    width: 100%;
+}
+tbody tr {
+    border-bottom: 1px solid black;
+    background-image: linear-gradient(lightgray, white, lightgray);
+}
+td {
+    font-size: large;
+}
+.trash {
+    background-color: red;
+}
+#entry {
+    font-size: 18px;
+}
+/*Form for adding new tasks*/
+footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    height: 2.5rem;
+}
+/* Test css */
+.container {
+    height: 200px;
+    position: relative;
+    border: 3px solid green;
+}
+  .vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.grapple:hover {
+    cursor: grab;
+}
+.grapple:active {
+    cursor: grabbing;
+}
+/* Filters*/
+#showAll, #showActive, #showCompleted {
+    cursor: pointer;
+}
