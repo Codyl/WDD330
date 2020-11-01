@@ -28,7 +28,7 @@ function displayLinks() {
     },
     {
       label: "Week6 notes",
-      url: "week6/index.html"
+      url: "todo/index.html"
     },
     {
       label: "Week7 notes",

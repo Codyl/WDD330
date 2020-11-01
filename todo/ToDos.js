@@ -86,7 +86,7 @@ function applyFilter(e) {
 
     //Declare variables
     let filteredToDos = [];
-    const allToDos = ls.getToDoList();
+    const allToDos = lsHelper.getToDoList();
 
     //Check which filter to apply
     if(e.currentTarget.id == 'showActive') {
