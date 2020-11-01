@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX and functions</title>
+</head>
+<body>
+    <h1>Ajax and advanced function logic</h1>
+    <div>
+        <h2>Ajax</h2>
+        <summary>
+            The advantage of using ajax(asynchronous Javascript and JSON) is that the page can be updated without
+            the browser having to reload. To do this Javascript requests a JSON response object from a server. You
+            can use it to request from a site that uses cross orgin resource sharing using an API. In other words you cant just
+            request from any server and expect it to work.
+        </summary>
+        <note>You can use XMLHttpRequest but fetch is the shorter way to do this and uses promises.</note>
+        <blockquote><pre><code>
+            fetch(url)
+            .then( response => response.json() );
+            .then( data => console.log(Object.entries(data)) )
+            .catch( error => console.log('There was an error: ', error))
+        </code></pre></blockquote>
+        <h3>Requests</h3>
+        <note>Requests are made to a url to access specific data like weather.</note>
+        <div>Requests have the following properties:</div>
+        <ul>
+            <li>url</li>
+            <li>method</li>
+            <li>headers</li>
+            <li>mode</li>
+            <li>cache</li>
+            <li>credentials</li>
+            <li>redirect</li>
+        </ul>
+        <h3>Responses</h3>
+        <note>.json() converts JSON data from the server/API into a Javascript object. We can then manipulate the data in the object.</note>
+        <div>Responses have the following properties:</div>
+        <ul>
+            <li>response.ok</li>
+            <li>response.status</li>
+            <li>response.statusText</li>
+            <li>response.type</li>
+            <li>response.url</li>
+        </ul>
+    </div>
+    <div>
+        <h2>Advanced function logic</h2>
+        <h3>Recursion</h3>
+        <p>
+            Functions that call itself again and again until a condition is met. 
+            Can be visualized with a tree diagram to see each time the function is called.
+            A common example is factorial.
+        </p>
+        <blockquote><pre><code>
+            function factorial(n) {
+                if (n === 0) {
+                return 1;
+                } else {
+                return n * factorial(n - 1);
+                }
+            } 
+        </code></pre></blockquote>
+        <h3>Callbacks</h3>
+        <p>
+            Callback are used to let code run asynchronously (non-blocking) despite the fact
+            that Javascript is single threaded. We can ensure things that take
+            a long time are not keeping the rest of the program from continuing to run. They
+            are functions passed to other functions and invoked from inside where they were passed.
+            Callbacks always wait for the current execution stack to complete before it’s invoked.
+        </p>
+        <blockquote><pre><code>
+            function wait(message, callback, seconds){
+                setTimeout(callback,seconds * 1000);
+                console.log(message);
+            }
+            function selfDestruct(){
+                console.log('BOOOOM!');
+            }
+            wait('This tape will self-destruct in five seconds ... ',
+            selfDestruct, 5);
+        </code></pre></blockquote>
+        <h3>Promises</h3>
+        <p>Promises do the same thing as callbacks but simplify the process and avoid
+            too many nested callbacks. Promises take the functions resolve and reject as arguments.
+            Promises have a then method for fulfillment and/or rejection cases and a catch method for 
+            just handling the rejection case.
+        </p>
+        <h3>Closures</h3>
+        <p>Functions that allow you to access variables outside their normal scope.
+        </p>
+        <blockquote><pre><code>
+            function closure() {
+                const a = 1.8;
+                const b = 32;
+                return c => c * a + b;
+            }  
+        </code></pre></blockquote>
+        <note>Generators are functions that produce iterators by using a yield (value
+            bring returned is remembered by the yield)</note>
+        <h3>Functional programming</h3>
+        <summary>The big idea with functional programming is using pure functions. pure
+            functions can be used with other types of programming as well to avoid errors.
+        </summary>
+        <div>Pure functions follow these rules:</div>
+        <ul>
+            <li>Return value only depend on parameters.</li>
+            <li>Don't not alter values from outside the functions.</li>
+            <li>Will always return the same result.</li>
+        </ul>
+        <h3>Currying</h3>
+        <summary>
+            Curried functions take a function as a parameter and/or return a function.
+            By returning a function you can store values.
+        </summary>
+        <blockquote><pre><code>
+            function multiplier(x,y) { //Stores x for use in calcTax function if y is undefined
+                if (y === undefined) {
+                return function(z) {
+                return x * z;
+                }
+                } else {
+                return x * y;
+                }
+            }                
+            calcTax = multiplier(0.22);//0.22 is x. No y param is given here 
+            << function (z){
+            return x * z;
+            }
+            calcTax(400);// 400 is passed for the value of z. it uses the anon returned function in multiplier to get x.
+        </code></pre></blockquote>
+    </div>
+</body>
+</html>
