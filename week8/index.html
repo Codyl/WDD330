@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id='left'>Slide to the left</div>
+    <div id='right'>Slide to the right (smooth)</div>
+    <div id='hop'>One hop this time</div>
+    <div id='criss-cross'>criss-cross!</div>
+    <div id='cha-cha'>Cha cha real smooth (animate)</div>
+    <h2>Canvas, SVG, Drag and Drop</h2>
+    <p draggable="true" id='para'>Canvas and SVG are used for drawign graphics. SVG is easier but Canvas allows for access to individual pixels. Also I am draggable if you wish to drag me to the bottom of the page and not see a block of text up here.</p>
+    <canvas id="myCanvas" class="myCanvas" width="200" height="200">
+        Sorry! Your browser doesn’t support Canvas.
+    </canvas>
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 400 400">
+        <desc>Drawing a rectangle</desc>
+            <rect x="100" y="10" width="10" height="100"  
+                fill="blue" stroke="green" stroke-width="1"  />  
+        
+    </svg>
+    <svg height="150" width="400">
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:rgba(9, 255, 0, 0.411);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <ellipse id='circ' cx="200" cy="70" rx="85" ry="55" fill="url(#grad1)" />
+      </svg>
+      <div id='bottom'></div>
+    <script src="playground.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#left:hover {
+    transform: translateX(-30px);
+}
+#right:hover {
+    transform: translateX(30px);
+    transition-property: transform; 
+    transition-duration: 0.2s;  
+    transition-timing-function: ease-out;
+    transition-delay: 50ms;
+}
+#hop:hover {
+    transform: rotate(10deg) translateY(-30px) skew(20deg)  scale(1.5);
+    transition: transform 0.5s;
+}
+@keyframes myAnimation {
+    0% {
+        background-position: 0px 0;
+    }
+    100% {
+        background-position: 940px 0;
+    }
+}
+#cha-cha {
+    content: '';
+    transform: scale(.5);
+    width: 150px;
+    height: 500px;
+    background-image: url(dance.png);
+    margin: auto;
+    animation-duration: 1s;
+    animation-timing-function: steps(6, end);
+    animation-name: myAnimation;
+    animation-play-state: paused;
+    animation-iteration-count: infinite;
+    float: left;
+}
+#cha-cha:hover {
+    animation-play-state: running;
+}
+@keyframes cross {
+    0% {
+        transform: scaleX(-1) translateX(100px);
+    }
+    100% {
+        transform: scaleX(1) translateX(100px);
+    }
+}
+#criss-cross:hover {
+    animation-name: cross;
+    animation-duration: 2s;
+}
+.myCanvas {
+    border: dotted 2px black;
+}
+svg {
+    position: absolute;
+}
+rect {
+    position: relative;
+    left: 20;
+}
+#bottom {
+    float: bottom;
+    height:400px;
+}
