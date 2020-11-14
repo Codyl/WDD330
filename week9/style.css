@@ -1,0 +1,12 @@
+summary {
+    font-size: large;
+    background-color: blanchedalmond;
+    border-radius: 5px;
+}
+note {
+    display: block;
+    background: lightgreen;
+    font-style: italic;
+    font-size: small;
+    border-radius: 5px;
+}

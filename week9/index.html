@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 9</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Window object Summary</h2>
+    <summary>using the keyword this refers to the window object. You can also access it using window.
+        The window object contains information about the browser and some functions come from there such as
+        alert() or isNaN(). You can manipulate the browser in some ways but this is mostly discouraged. There
+        are few cases it is apropriate to manipulate the users browser so be careful not to annoy your users! 
+    </summary>
+    <h2>HTML5 API Summary</h2>
+    <summary>The data- attribute can be used to store custom data with the tags in html.
+        Elements have a dataset property that can be used to access this data. You can also use
+        document.querySelector.HTML5 has many apis that provide additional features. There is an event related
+        to localStorage called 'storage'. You can use web workers to carry out processes in the background
+        that could hold your page up. Websockets  provide two-way communication with the server. The connection
+        is kept open.
+        <button onclick="window.location.href = './messaging.html'">Click here for a example</button>
+    </summary>
+    <note>!NOTE! Storing in JSON object - is in memory. 
+        As soon as you close page/browser it is gone. Local storage - is a persistent storage. 
+        You may save you JSON object as stringified in it. 
+        And if you close your browser you may then get it back.</note>
+    <testTag data-test='testing...'>This is the testTag that stores a data-test attribute!</testTag>
+    <iframe width="420" height="315" src="https://www.youtube.com/embed/7tnrATiclg4" controls>Video not working!!!</iframe>
+    <video width="320" height="240" controls>
+        <source src="https://www.youtube.com/embed/7tnrATiclg4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <note>!NOTE! The video tag works best for files you have downloaded rather than from the browser.</note>
+    <script src="main.js"></script>
+</body>
+</html>
