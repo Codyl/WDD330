@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Form validation in legacy browsers</h1>
+    <p>Forms must be validated to protect your database, prevent errors, and of course user frustration. 
+        This may include requiring some information or having a pattern.
+        Forms can be validated by using keywords in the html however, some older browsers do not support this.
+        In order to make it accessible to legacy browsers you would need to do some of this validation in 
+        javascript. To do this we use the Constraint Validation API available in most browsers. For some legacy
+        browsers you would need to take this a step further and use javascript without the help of the api. In
+        the example below we use the validity.valueMissing boolean provided by the api. Using this means we
+        have to include required in the html input itself. By telling the form not to validate we ensure only our
+        styled validation appears, not the default. We can also setCustomValidity().
+    </p>
+    <form id='form' novalidate>
+        <label for="mail">I Ragnarok, demand you give me words!:</label>
+        <input type="email" id="mail" name="mail" required>
+        <button>Submit</button>
+        <span id="err"></span>
+      </form>
+      <h1>Fetch options</h1>
+      <p>In the Javascript we have a custom header and request. Headers allow us to explain
+          what is being requested. We can make the request tell it whether to include
+          credentials, use cors, and what method to use among other things. We can then
+          create a fetch that uses that information. This may be useful for web workers,
+          creating multiple of the same request, or just ensuring our data is accepted where 
+          we are trying to send/request the data. To ensure the fetch goes well, we can
+          check if response.ok and use feature detection with window.fetch as well as catch errors like typeError. We can guard to
+          ensure headers do not get changed.
+      </p>
+      <span>Here is my post request I created if you look at the javascript (I get the data.name returned):</span>
+<script>
+const form = document.getElementById("form");
+const email = document.getElementById('mail');
+const err = document.getElementById('err');
+
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
+  console.log(email.validity);
+  if (email.validity.valueMissing) {
+    err.textContent ='fool! Have you no words for this incredible form?';
+  } else {
+    err.textContent = '';
+  }
+});
+const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+const data = { 
+    name: 'mark',
+    job: 'king of the world',
+    build: 'top notch'
+    };
+
+const myRequest = new Request('https://reqres.in/api/users', {
+  method: 'POST', 
+  headers: myHeaders,
+  body: JSON.stringify(data),
+});
+
+fetch(myRequest)
+    .then(response => {return response.json()})
+    .then(data => {console.log('Success:', data); 
+    const myDiv = document.createElement('div');
+myDiv.textContent = data.name;
+document.body.appendChild(myDiv);
+    })
+    .catch((error) => {console.error('Error:', error);});
+
+</script>
+</body>
+</html>
